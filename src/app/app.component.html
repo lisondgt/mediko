@@ -8,27 +8,37 @@
     <div class="sidebar-logo">
       <a href="https://ng.ant.design/" target="_blank">
         <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-        <h1>Ant Design Of Angular</h1>
+        <h1>Mediko</h1>
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+      <li nz-submenu nzOpen nzTitle="Mes rendez-vous">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Welcome</a>
+            <a routerLink="/add-rdv">Ajout de rendez-vous</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>Monitor</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Workplace</a>
+            <a routerLink="/show-rdv">Gestion des rendez-vous</a>
           </li>
         </ul>
       </li>
-      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+      <li nz-submenu nzOpen nzTitle="Patients">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
+            <a routerLink="/add-patient">Ajouter un patient</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/show-patient">Gestion des patients</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Médecins">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/add-medecin">Ajouter un médecin</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/show-medecin">Gestion des médecins</a>
           </li>
         </ul>
       </li>
