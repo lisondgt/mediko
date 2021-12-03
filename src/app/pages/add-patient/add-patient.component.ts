@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PatientModel} from "../../Models/patient.model";
+import {PatientCommands} from "../../../Services/Commands/patient.commands";
 
 @Component({
   selector: 'app-add-patient',
@@ -9,16 +10,23 @@ import {PatientModel} from "../../Models/patient.model";
 
 export class AddPatientComponent {
 
+  constructor(private patientCommands:PatientCommands) {
+
+  }
+
   genders = ['Homme', 'Femme'];
 
-  model = new PatientModel('Gaelle', 'Bauvin', '1999-11-30' , 'gaelle@bauvin.com', '0612345678', '155 rue du molinel, Lille', this.genders[1]);
+  patient = new PatientModel('Gaelle', 'Bauvin', '1999-11-30' , 'gaelle@bauvin.com', '0612345678', '155 rue du molinel, Lille', this.genders[1]);
 
   newMedecin(){
-    this.model = new PatientModel('', '', new Date().toISOString().substring(0,10), '', '', '', '');
+    this.patient = new PatientModel('', '', new Date().toISOString().substring(0,10), '', '', '', '');
   }
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
+  onCreatePatient() {
+    this.patientCommands.addPatientToFireBaseDataBase(this.patient);
+    this.submitted = true;
+  }
 
 }

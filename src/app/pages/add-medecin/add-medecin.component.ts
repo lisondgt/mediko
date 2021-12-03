@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MedecinModel} from "../../Models/medecin.model";
+import {MedecinCommands} from "../../../Services/Commands/medecin.commands";
 
 @Component({
   selector: 'app-add-medecin',
@@ -8,6 +9,11 @@ import {MedecinModel} from "../../Models/medecin.model";
 })
 
 export class AddMedecinComponent {
+
+  constructor(private medecinCommands:MedecinCommands) {
+
+  }
+
   professions = ['Médecin généraliste', 'Ostéopathe',
     'Kinésithérapeute'];
 
@@ -19,6 +25,9 @@ export class AddMedecinComponent {
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
+  onSubmit() {
+    this.medecinCommands.addMedecinToFireBaseDataBase(this.model);
+    this.submitted = true;
+  }
 
 }
