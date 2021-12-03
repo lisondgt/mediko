@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "mediko-60838": {
+      "hosting": {
+        "mediko": [
+          "mediko-60838"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "mediko-60838"
+  }
+}
