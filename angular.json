@@ -113,6 +113,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "mediko:build:production",
+            "firebaseProject": "mediko-60838",
+            "firebaseHostingSite": "mediko-60838"
+          }
         }
       }
     }
