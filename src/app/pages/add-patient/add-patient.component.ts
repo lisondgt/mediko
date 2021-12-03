@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from "@angular/forms";
+import {PatientModel} from "../../Models/patient.model";
 
 @Component({
   selector: 'app-add-patient',
@@ -7,11 +7,18 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./add-patient.component.scss']
 })
 
-export class AddPatientComponent implements OnInit {
+export class AddPatientComponent {
 
-  constructor() { }
+  genders = ['Homme', 'Femme'];
 
-  ngOnInit() {
+  model = new PatientModel('Gaelle', 'Bauvin', '1999-11-30' , 'gaelle@bauvin.com', '0612345678', '155 rue du molinel, Lille', this.genders[1]);
+
+  newMedecin(){
+    this.model = new PatientModel('', '', new Date().toISOString().substring(0,10), '', '', '', '');
   }
+
+  submitted = false;
+
+  onSubmit() { this.submitted = true; }
 
 }

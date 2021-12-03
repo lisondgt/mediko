@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h2>Ajouter un médecin</h2>
       <div [hidden]="submitted">
+        <h2>Ajouter un médecin</h2>
         <form (ngSubmit)="onSubmit()" #addMedecin="ngForm">
           <div class="mb-3">
             <label for="firstname" class="form-label">Prénom</label>
@@ -42,27 +42,21 @@
       </div>
       <div [hidden]="!submitted">
         <h2>Vous avez envoyé ces informations</h2>
-        <div class="row">
-          <div class="col-xs-3">Prénom</div>
-          <div class="col-xs-9">{{ model.firstname }}</div>
+        <div>
+            <p><span class="fw-bold">Prénom: </span>{{ model.firstname }}</p>
         </div>
-        <div class="row">
-          <div class="col-xs-3">Nom</div>
-          <div class="col-xs-9">{{ model.lastname }}</div>
+        <div>
+          <p><span class="fw-bold">Nom: </span>{{ model.lastname }}</p>
         </div>
-        <div class="row">
-          <div class="col-xs-3">Profession</div>
-          <div class="col-xs-9">{{ model.profession }}</div>
+        <div>
+          <p><span class="fw-bold">Profession: </span>{{ model.profession }}</p>
         </div>
-        <div class="row">
-          <div class="col-xs-3">Email</div>
-          <div class="col-xs-9">{{ model.email }}</div>
+        <div>
+          <p><span class="fw-bold">Email: </span>{{ model.email }}</p>
         </div>
-        <div class="row">
-          <div class="col-xs-3">Téléphone</div>
-          <div class="col-xs-9">{{ model.phone }}</div>
+        <div>
+          <p><span class="fw-bold">Téléphone: </span>{{ model.phone }}</p>
         </div>
-        <br>
         <button class="btn btn-primary" (click)="submitted=false">Edit</button>
       </div>
     </div>

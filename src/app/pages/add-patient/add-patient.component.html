@@ -1,7 +1,78 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <h2>Ajouter un patient</h2>
+    <div class="col-12">
+      <div [hidden]="submitted">
+        <h2>Ajouter un patient</h2>
+        <form (ngSubmit)="onSubmit()" #addPatient="ngForm">
+          <div class="mb-3">
+            <label for="firstname" class="form-label">Prénom</label>
+            <input class="form-control" id="firstname" required type="text" name="firstname"  #firstname="ngModel" [(ngModel)]="model.firstname">
+            <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger">
+              Le prénom est obligatoire
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="lastname" class="form-label">Nom</label>
+            <input class="form-control" id="lastname" required type="text" name="lastname" #lastname="ngModel" [(ngModel)]="model.lastname">
+            <div [hidden]="lastname.valid || lastname.pristine" class="alert alert-danger">
+              Le nom de famille est obligatoire
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="birth" class="form-label">Date de naissance</label>
+            <input class="form-control" type="date" id="birth" name="birth" required [(ngModel)]="model.birth">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input class="form-control" id="email" type="email" name="email" #email="ngModel" required [(ngModel)]="model.email">
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+              L'email est obligatoire
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Numéro de téléphone</label>
+            <input class="form-control" id="phone" type="tel" name="phone" [(ngModel)]="model.phone">
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Adresse</label>
+            <input class="form-control" id="address" type="tel" name="address" [(ngModel)]="model.address">
+          </div>
+          <div class="mb-3">
+            <label for="gender" class="form-label">Sexe</label>
+            <select class="form-select" id="gender" name="gender" required [(ngModel)]="model.gender">
+              <option *ngFor="let gend of genders" [value]="gend">{{gend}}</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <button class="btn btn-success" [disabled]="!addPatient.form.valid">Envoyer le formulaire</button>
+          </div>
+        </form>
+      </div>
+      <div [hidden]="!submitted">
+        <h2>Vous avez envoyé ces informations</h2>
+        <div>
+          <p><span class="fw-bold">Prénom: </span>{{ model.firstname }}</p>
+        </div>
+        <div>
+          <p><span class="fw-bold">Nom: </span>{{ model.lastname }}</p>
+        </div>
+        <div>
+          <p><span class="fw-bold">Date de naissance: </span>{{ model.birth | date:'short' }}</p>
+        </div>
+        <div>
+          <p><span class="fw-bold">Email: </span>{{ model.email }}</p>
+        </div>
+        <div>
+          <p><span class="fw-bold">Téléphone: </span>{{ model.phone }}</p>
+        </div>
+        <div>
+          <p><span class="fw-bold">Adresse: </span>{{ model.address }}</p>
+        </div>
+        <div>
+          <p><span class="fw-bold">Sexe: </span>{{ model.gender }}</p>
+        </div>
+        <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+      </div>
     </div>
   </div>
 </div>
