@@ -1,7 +1,70 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-12">
       <h2>Ajouter un médecin</h2>
+      <div [hidden]="submitted">
+        <form (ngSubmit)="onSubmit()" #addMedecin="ngForm">
+          <div class="mb-3">
+            <label for="firstname" class="form-label">Prénom</label>
+            <input class="form-control" id="firstname" required type="text" name="firstname"  #firstname="ngModel" [(ngModel)]="model.firstname">
+            <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger">
+              Le prénom est obligatoire
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="lastname" class="form-label">Nom</label>
+            <input class="form-control" id="lastname" required type="text" name="lastname" #lastname="ngModel" [(ngModel)]="model.lastname">
+            <div [hidden]="lastname.valid || lastname.pristine" class="alert alert-danger">
+              Le nom de famille est obligatoire
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="profession" class="form-label">Profession</label>
+            <select class="form-select" id="profession" name="profession" required [(ngModel)]="model.profession">
+              <option *ngFor="let prof of professions" [value]="prof">{{prof}}</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input class="form-control" id="email" type="email" name="email" #email="ngModel" required [(ngModel)]="model.email">
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+              L'email est obligatoire
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Numéro de téléphone</label>
+            <input class="form-control" id="phone" type="tel" name="phone" [(ngModel)]="model.phone">
+          </div>
+          <div class="mb-3">
+            <button class="btn btn-success" [disabled]="!addMedecin.form.valid">Envoyer le formulaire</button>
+          </div>
+        </form>
+      </div>
+      <div [hidden]="!submitted">
+        <h2>Vous avez envoyé ces informations</h2>
+        <div class="row">
+          <div class="col-xs-3">Prénom</div>
+          <div class="col-xs-9">{{ model.firstname }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Nom</div>
+          <div class="col-xs-9">{{ model.lastname }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Profession</div>
+          <div class="col-xs-9">{{ model.profession }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Email</div>
+          <div class="col-xs-9">{{ model.email }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Téléphone</div>
+          <div class="col-xs-9">{{ model.phone }}</div>
+        </div>
+        <br>
+        <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+      </div>
     </div>
   </div>
 </div>

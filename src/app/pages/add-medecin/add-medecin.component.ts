@@ -11,7 +11,11 @@ export class AddMedecinComponent {
   professions = ['Médecin généraliste', 'Ostéopathe',
     'Kinésithérapeute'];
 
-  model = new MedecinModel('d\'agostini', 'Lison', this.professions[0], 'lison@dagostini.com', '0612345678');
+  model = new MedecinModel('Lison', 'd\'agostini', this.professions[0], 'lison@dagostini.com', '0612345678');
+
+  newMedecin(){
+    this.model = new MedecinModel('', '', '', '', '');
+  }
 
   submitted = false;
 
