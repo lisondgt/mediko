@@ -17,6 +17,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import {AngularFireModule} from "@angular/fire/compat";
+import { AuthModule } from '@auth0/auth0-angular';
 
 registerLocaleData(fr);
 
@@ -35,7 +36,11 @@ registerLocaleData(fr);
     NzMenuModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    AuthModule.forRoot({
+      domain: 'dev-l33ey1e5.us.auth0.com',
+      clientId: 'UdoEYJpbPvELAVM9Phkn53LZRo96sOuQ'
+    }),
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent]

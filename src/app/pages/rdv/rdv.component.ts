@@ -7,7 +7,7 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./rdv.component.scss']
 })
 
-export class RdvComponent implements OnInit {
+export class RdvComponent {
 
   constructor() { }
 

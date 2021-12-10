@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'add-patient', loadChildren: () => import('./pages/add-patient/add-patient.module').then(m => m.AddPatientModule) },
   { path: 'add-medecin', loadChildren: () => import('./pages/add-medecin/add-medecin.module').then(m => m.AddMedecinModule) },
   { path: 'show-medecin', loadChildren: () => import('./pages/medecin/medecin.module').then(m => m.MedecinModule) },
+  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
 ];
 
 @NgModule({

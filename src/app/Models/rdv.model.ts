@@ -1,10 +1,11 @@
 export class RdvModel {
 
   constructor(
-    public typeMedecin: string,
-    public reason: string,
-    public dateRdv: string,
-    public patient:string,
+    public patientName: string,
+    public patientEmail: string,
+    public patientPhone: string,
+    public reasonRdv:string,
+    public dateRdv: string
   ) {  }
 
 }
