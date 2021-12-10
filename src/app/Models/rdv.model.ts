@@ -1,9 +1,9 @@
-export class rdvModel {
+export class RdvModel {
 
   constructor(
-    public typeMedecin: Array<string>,
-    public Reason: Array<string>,
-    public dateRdv: Date,
+    public typeMedecin: string,
+    public reason: string,
+    public dateRdv: string,
     public patient:string,
   ) {  }
 

@@ -17,16 +17,12 @@ export class AddMedecinComponent {
   professions = ['Médecin généraliste', 'Ostéopathe',
     'Kinésithérapeute'];
 
-  model = new MedecinModel('Lison', 'd\'agostini', this.professions[0], 'lison@dagostini.com', '0612345678');
-
-  newMedecin(){
-    this.model = new MedecinModel('', '', '', '', '');
-  }
+  medecin = new MedecinModel('', '', this.professions[0], '', '');
 
   submitted = false;
 
-  onSubmit() {
-    this.medecinCommands.addMedecinToFireBaseDataBase(this.model);
+  onCreateMedecin() {
+    this.medecinCommands.addMedecinToFireBaseDataBase(this.medecin);
     this.submitted = true;
   }
 

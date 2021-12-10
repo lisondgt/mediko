@@ -1,15 +1,58 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <h2>Prendre un rendez-vous</h2>
+    <div class="col-12">
+      <div [hidden]="submitted">
+        <h2>Ajouter un rendez-vous</h2>
+        <form (ngSubmit)="onCreateRdv()" #addRdv="ngForm">
+          <div class="mb-3">
+            <label for="typeMedecin" class="form-label">Médecin</label>
+            <input class="form-control" id="typeMedecin" required type="text" name="medecin" #typeMedecin="ngModel"
+                   [(ngModel)]="rdv.typeMedecin">
+            <div [hidden]="typeMedecin.valid || typeMedecin.pristine" class="alert alert-danger">
+              Le médecin est obligatoire
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="reason" class="form-label">Raison</label>
+            <input class="form-control" id="reason" required type="text" name="reason" #reason="ngModel"
+                   [(ngModel)]="rdv.reason">
+            <div [hidden]="reason.valid || reason.pristine" class="alert alert-danger">
+              La raison est obligatoire
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="dateRdv" class="form-label">Date du rendez-vous</label>
+            <input class="form-control" type="date" id="dateRdv" name="dateRdv" required [(ngModel)]="rdv.dateRdv">
+          </div>
+          <div class="mb-3">
+            <label for="patient" class="form-label">Patient</label>
+            <input class="form-control" id="patient" type="text" name="patient" #patient="ngModel" required
+                   [(ngModel)]="rdv.patient">
+            <div [hidden]="patient.valid || patient.pristine" class="alert alert-danger">
+              Le patient est obligatoire
+            </div>
+          </div>
+          <div class="mb-3">
+            <button class="btn btn-success" [disabled]="!addRdv.form.valid">Envoyer le formulaire</button>
+          </div>
+        </form>
+      </div>
+      <div [hidden]="!submitted">
+        <h2>Vous avez envoyé ces informations</h2>
+        <div>
+          <p><span class="fw-bold">Médecin: </span>{{ rdv.typeMedecin }}</p>
+        </div>
+        <div>
+          <p><span class="fw-bold">Raison: </span>{{ rdv.reason }}</p>
+        </div>
+        <div>
+          <p><span class="fw-bold">Date du rendez-vous: </span>{{ rdv.dateRdv }}</p>
+        </div>
+        <div>
+          <p><span class="fw-bold">Patient: </span>{{ rdv.patient }}</p>
+        </div>
+        <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+      </div>
     </div>
-    <form>
-      <select id="medecin" class="form-control" name="medecin" ngModel>
-        <option value="generaliste">Médecin généraliste</option>
-        <option value="osteopathe">Ostéopathe</option>
-        <option value="kinesitherapeute">kinésithérapeute</option>
-      </select>
-      <button type="submit">Valider</button>
-    </form>
   </div>
 </div>

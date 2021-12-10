@@ -16,11 +16,7 @@ export class AddPatientComponent {
 
   genders = ['Homme', 'Femme'];
 
-  patient = new PatientModel('Gaelle', 'Bauvin', '1999-11-30' , 'gaelle@bauvin.com', '0612345678', '155 rue du molinel, Lille', this.genders[1]);
-
-  newMedecin(){
-    this.patient = new PatientModel('', '', new Date().toISOString().substring(0,10), '', '', '', '');
-  }
+  patient = new PatientModel('', '', '' , '', '', '', this.genders[1]);
 
   submitted = false;
 
