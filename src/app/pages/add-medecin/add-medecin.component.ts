@@ -17,7 +17,7 @@ export class AddMedecinComponent {
   professions = ['Médecin généraliste', 'Ostéopathe',
     'Kinésithérapeute'];
 
-  medecin = new MedecinModel('', '', this.professions[0], '', '');
+  medecin = new MedecinModel('','', '', this.professions[0], '', '');
 
   submitted = false;
 

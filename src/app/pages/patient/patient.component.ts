@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from "@angular/forms";
+import { PatientModel } from '../../Models/patient.model';
+import PatientQuery from '../../../Services/Query/patient.query';
 
 @Component({
   selector: 'app-patient',
@@ -9,9 +10,19 @@ import {NgForm} from "@angular/forms";
 
 export class PatientComponent implements OnInit {
 
-  constructor() { }
+  constructor(public PatientQuery: PatientQuery) { }
+
+  patientList: Array<PatientModel> = [];
 
   ngOnInit() {
+    this.getAllPatients();
+  }
+
+  public getAllPatients() {
+    this.PatientQuery.getAllPatients().subscribe(patients => {
+      this.patientList = patients as Array<PatientModel>;
+      console.log(this.patientList)
+    })
   }
 
 }

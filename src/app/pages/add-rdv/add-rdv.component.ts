@@ -17,7 +17,7 @@ export class AddRdvComponent {
 
   }
 
-  rdv = new RdvModel('', '', '', '', '');
+  rdv = new RdvModel('','', '', '', '', '');
 
   submitted = false;
 

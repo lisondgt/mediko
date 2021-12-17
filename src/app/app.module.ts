@@ -34,13 +34,13 @@ registerLocaleData(fr);
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
+    AuthModule.forRoot({
+      domain: 'dev-igbwzhxt.us.auth0.com',
+      clientId: 'Dxk0ofUGFp10gvDn89yT3S5mXXehXoUa'
+    }),
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    AuthModule.forRoot({
-      domain: 'dev-l33ey1e5.us.auth0.com',
-      clientId: 'UdoEYJpbPvELAVM9Phkn53LZRo96sOuQ'
-    }),
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent]

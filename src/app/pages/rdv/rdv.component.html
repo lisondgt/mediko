@@ -1,7 +1,32 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-12">
       <h2>Gestion des rendez-vous</h2>
+      <nz-table #basicTable [nzData]="rdvList">
+        <thead>
+        <tr>
+          <th>Nom patient</th>
+          <th>Email patient</th>
+          <th>Téléphone patient</th>
+          <th>Raison du rendez-vous</th>
+          <th>Date du rendez-vous</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{data.patientName}}</td>
+          <td>{{data.patientEmail}}</td>
+          <td>{{data.patientPhone}}</td>
+          <td>{{data.reasonRdv}}</td>
+          <td>{{data.dateRdv}}</td>
+          <td>
+            <a>Editer - </a>
+            <a>Supprimer</a>
+          </td>
+        </tr>
+        </tbody>
+      </nz-table>
     </div>
   </div>
 </div>

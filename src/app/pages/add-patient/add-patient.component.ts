@@ -16,7 +16,7 @@ export class AddPatientComponent {
 
   genders = ['Homme', 'Femme'];
 
-  patient = new PatientModel('', '', '' , '', '', '', this.genders[1]);
+  patient = new PatientModel('','', '', '' , '', '', '', this.genders[1]);
 
   submitted = false;
 

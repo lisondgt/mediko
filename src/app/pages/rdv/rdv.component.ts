@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from "@angular/forms";
+import { RdvModel } from '../../Models/rdv.model';
+import RdvQuery from '../../../Services/Query/rdv.query';
 
 @Component({
   selector: 'app-rdv',
@@ -7,11 +8,21 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./rdv.component.scss']
 })
 
-export class RdvComponent {
+export class RdvComponent implements OnInit {
 
-  constructor() { }
+  constructor(public RdvQuery: RdvQuery) { }
+
+  rdvList: Array<RdvModel> = [];
 
   ngOnInit() {
+    this.getAllRdv();
+  }
+
+  public getAllRdv() {
+    this.RdvQuery.getAllRdv().subscribe(rdv => {
+      this.rdvList = rdv as Array<RdvModel>;
+      console.log(this.rdvList)
+    })
   }
 
 }
